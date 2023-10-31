@@ -70,7 +70,7 @@ public class AddressObjectService {
             if (e.getStartDate().equals(startDate) && e.getTypeName().equals(typeName)) {
                 Integer type = e.getTypeName();
                 String name = e.getName();
-                integerStringMap.put(type, name);
+                integerStringMap.put(type,name);
             }
         }
         return integerStringMap;
@@ -87,8 +87,4 @@ public class AddressObjectService {
         return addressObjectRepository.getAddressObjectById(id);
     }
 
-
-    public List<AddressObject> getAddressObjectsByTypeName(int typeName) {
-        return addressObjectRepository.getAddressObjectsByTypeName(typeName);
-    }
 }

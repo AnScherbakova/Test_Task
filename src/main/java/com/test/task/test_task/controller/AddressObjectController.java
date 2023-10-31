@@ -28,7 +28,7 @@ public class AddressObjectController {
         return addressObjectService.getAllAddress();
     }
 
-    @GetMapping("/addr/obj/{id}")
+    @PostMapping ("/addr/obj/{id}")
     public AddressObject getAddressObjectById(@PathVariable int id) {
         AddressObject addressObject = addressObjectService.getAddressObjectById(id);
         return addressObject;
@@ -40,20 +40,15 @@ public class AddressObjectController {
         return addressObject;
     }
 
-    @GetMapping("/addr/obj/get/{typeName}")
-    public List<AddressObject> getAddressObjectsByTypeName(@PathVariable int typeName) {
-        return addressObjectService.getAddressObjectsByTypeName(typeName);
-    }
-
-    @GetMapping("/addr/obj/{date}")
+    @PostMapping("/addr/obj/{date}")
     public List<Integer> getAddressObjectByDate(@PathVariable LocalDate date) {
         List<Integer> addressObjects = addressObjectService.getAddressObjectByDate(date);
         return addressObjects;
     }
 
     @PostMapping("/addr/obj/dateAndTypeName")
-    public Map<Integer, String> getAddressByDateAndTypeName(@RequestParam(value = "date", required = false) LocalDate date,
-                                                            @RequestParam(value = "typeName", required = false) int typeName) {
+    public Map<Integer, String> getAddressByDateAndTypeName(@RequestParam(value = "date") LocalDate date,
+                                                            @RequestParam(value = "typeName") int typeName) {
         return addressObjectService.getAddressByStartDateAndTypeName(date, typeName);
     }
 

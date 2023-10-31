@@ -18,17 +18,8 @@ import java.util.Map;
 public interface AddressObjectRepository extends JpaRepository<AddressObject, Integer> {
     @Query(value = "SELECT * FROM as_addr_obj", nativeQuery = true)
     List<AddressObject> findAll();
-
     AddressObject getAddressObjectById(int id);
-
-    List<AddressObject> getAddressObjectsByTypeName(int typeName);
-
     List<AddressObject> getAddressObjectsByStartDate(LocalDate date);
-
-//    @Query(value = "select my_db.as_addr_obj.type_name, my_db.as_addr_obj.name from my_db.as_addr_obj +
-//            where type_name and start_date", nativeQuery = true)
-//    Collection<AddressObject> getAddressObjectsByStartDateAndTypeName(LocalDate startDate, int typeName);
-//    Map<Integer, String> getAddressObjectsByStartDateAndTypeName(LocalDate startDate, int typeName);
 
 
 }
