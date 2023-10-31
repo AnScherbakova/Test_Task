@@ -39,8 +39,8 @@ public class AddressObjectController {
     }
 
     @PostMapping("/addr/obj/{date}")
-    public List<AddressObject> getAddressObjectByDate(@PathVariable LocalDate date) {
-        List<AddressObject> addressObjects = addressObjectService.getAddressObjectByDate(date);
+    public List<Integer> getAddressObjectByDate(@PathVariable LocalDate date) {
+        List<Integer> addressObjects = addressObjectService.getAddressObjectByDate(date);
         return addressObjects;
     }
 }

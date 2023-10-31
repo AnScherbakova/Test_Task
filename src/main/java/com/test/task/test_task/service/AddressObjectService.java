@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -23,9 +25,14 @@ public class AddressObjectService {
         addressObjectRepository.save(addressObject);
     }
 
-    public List<AddressObject> getAddressObjectByDate(LocalDate date) {
-        List<AddressObject> objectList = addressObjectRepository.getAddressObjectsByStartDate(date);
+    public List<Integer> getAddressObjectByDate(LocalDate date) {
+        List<Integer> objectList = new ArrayList<>();
+        for (AddressObject e : addressObjectRepository.getAddressObjectsByStartDate(date)) {
+            Integer typeName = e.getTypeName();
+            objectList.add(typeName);
+        }
         return objectList;
+
     }
 //
     public AddressObject getAddressObjectById(int id) {

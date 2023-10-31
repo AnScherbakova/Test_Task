@@ -2,6 +2,7 @@ package com.test.task.test_task.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -17,8 +18,10 @@ public class AddressObject {
     private String name;
     @Column(name = "type_name")
     private Integer typeName;
+    @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name = "start_date")
     private LocalDate startDate;
+    @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name = "end_date")
     private LocalDate endDate;
     @Column(name = "ISACTUAL")
