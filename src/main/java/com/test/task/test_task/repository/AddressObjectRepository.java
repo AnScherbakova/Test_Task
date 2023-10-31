@@ -2,6 +2,7 @@ package com.test.task.test_task.repository;
 
 import com.test.task.test_task.entity.AddressObject;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
@@ -10,6 +11,8 @@ import java.util.List;
 
 @Repository
 public interface AddressObjectRepository extends JpaRepository<AddressObject, Integer> {
-    AddressObject getAddressObjectByIdById (int id);
-    List<AddressObject> getAddressObjectsByDate (LocalDate date);
+    @Query(value = "select * from as_addr_obj", nativeQuery = true)
+    List<AddressObject> findAll();
+//    AddressObject getAddressObjectByIdById (int id);
+//    List<AddressObject> getAddressObjectsByDate (LocalDate date);
 }

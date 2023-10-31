@@ -6,20 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 
 @Service
 public class AddressObjectService {
-    
-    private final  AddressObjectRepository addressObjectRepository;
+    @Autowired
+    private AddressObjectRepository addressObjectRepository;
 
-    public AddressObjectService(AddressObjectRepository addressObjectRepository) {
-        this.addressObjectRepository = addressObjectRepository;
-    }
 
-    public Collection<AddressObject> getAllAddress() {
+    public List<AddressObject> getAllAddress() {
         return addressObjectRepository.findAll();
     }
 
@@ -27,12 +23,12 @@ public class AddressObjectService {
         addressObjectRepository.save(addressObject);
     }
 
-    public List<AddressObject> getAddressObjectByDate(LocalDate date) {
-        List<AddressObject> objectList= addressObjectRepository.getAddressObjectsByDate(date);
-        return objectList;
-    }
-
-    public AddressObject getAddressObjectById(int id) {
-        return addressObjectRepository.getAddressObjectByIdById(id);
-    }
+//    public List<AddressObject> getAddressObjectByDate(LocalDate date) {
+//        List<AddressObject> objectList = addressObjectRepository.getAddressObjectsByDate(date);
+//        return objectList;
+//    }
+//
+//    public AddressObject getAddressObjectById(int id) {
+//        return addressObjectRepository.getAddressObjectByIdById(id);
+//    }
 }

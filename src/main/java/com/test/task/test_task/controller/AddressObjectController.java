@@ -2,32 +2,29 @@ package com.test.task.test_task.controller;
 
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.service.AddressObjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class AddressObjectController {
 
-    private final AddressObjectService addressObjectService;
-
-    public AddressObjectController(AddressObjectService addressObjectService) {
-        this.addressObjectService = addressObjectService;
-    }
+    @Autowired
+    private  AddressObjectService addressObjectService;
 
     @GetMapping("/addr/obj")
-    public Collection<AddressObject> showAllAddressObjects() {
+    public List<AddressObject> showAllAddressObjects() {
         return addressObjectService.getAllAddress();
     }
 
-    @GetMapping("/addr/obj/{id}")
-    public AddressObject getAddressObjectById(@PathVariable int id) {
-        AddressObject addressObject = addressObjectService.getAddressObjectById(id);
-        return addressObject;
-    }
+//    @GetMapping("/addr/obj/{id}")
+//    public AddressObject getAddressObjectById(@PathVariable int id) {
+//        AddressObject addressObject = addressObjectService.getAddressObjectById(id);
+//        return addressObject;
+//    }
 
     @PostMapping("/addr/obj")
     public AddressObject addNewAddressObject(@RequestBody AddressObject addressObject) {
@@ -35,9 +32,9 @@ public class AddressObjectController {
         return addressObject;
     }
 
-    @PostMapping("/addr/obj/{date}")
-    public List<AddressObject> getAddressObjectByDate(@PathVariable LocalDate date) {
-        List<AddressObject> addressObjects = addressObjectService.getAddressObjectByDate(date);
-        return addressObjects;
-    }
+//    @PostMapping("/addr/obj/{date}")
+//    public List<AddressObject> getAddressObjectByDate(@PathVariable LocalDate date) {
+//        List<AddressObject> addressObjects = addressObjectService.getAddressObjectByDate(date);
+//        return addressObjects;
+//    }
 }

@@ -1,6 +1,7 @@
 package com.test.task.test_task.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -27,6 +28,7 @@ public class AddressObject {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "obj_id")
+    @JsonBackReference
     private AddressHierarchy addressHierarchy;
 
     public AddressObject(String name, Integer typeName,

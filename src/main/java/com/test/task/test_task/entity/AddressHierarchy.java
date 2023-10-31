@@ -1,5 +1,6 @@
 package com.test.task.test_task.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
@@ -21,6 +22,7 @@ public class AddressHierarchy {
     private boolean isActive;
 
     @OneToMany(mappedBy = "addressHierarchy")
+    @JsonManagedReference
     private Collection<AddressObject> addressObjects;
 
     public AddressHierarchy(LocalDate startDate, LocalDate endDate, boolean isActive) {
