@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressObjectServiceImpl implements AddressObjectService {
 
     @Autowired (required=false)
     private AddressObjectRepository addressObjectRepository;
+
     @Override
     public List<AddressObject> getAllAddress() {
         return addressObjectRepository.findAll();

@@ -41,6 +41,7 @@ public class AddressObject {
     }
 
     public AddressObject() {
+        
     }
 
     public int getId() {
