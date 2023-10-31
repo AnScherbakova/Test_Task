@@ -1,13 +1,19 @@
 package com.test.task.test_task.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "as_addr_obj")
+@EqualsAndHashCode
+@ToString
+@Getter
+@Setter
 public class AddressObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +32,8 @@ public class AddressObject {
     @Column(name = "ISACTIVE")
     private boolean isActive;
 
-    @ManyToOne
-    @JoinColumn (name = "parent_obj_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_obj_id", nullable = false)
     private AddressHierarchy addressHierarchy;
 
     public AddressObject(String name, Integer typeName,
@@ -42,83 +48,7 @@ public class AddressObject {
         this.isActive = isActive;
     }
 
-
-
-    public int getId() {
-        return id;
+    public AddressObject() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(Integer typeName) {
-        this.typeName = typeName;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public boolean isActual() {
-        return isActual;
-    }
-
-    public void setActual(boolean actual) {
-        isActual = actual;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public AddressHierarchy getAddressHierarchy() {
-        return addressHierarchy;
-    }
-
-    public void setAddressHierarchy(AddressHierarchy addressHierarchy) {
-        this.addressHierarchy = addressHierarchy;
-    }
-
-    @Override
-    public String toString() {
-        return "AddressObject{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", typeName='" + typeName + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", isActual=" + isActual +
-                ", isActive=" + isActive +
-                ", addressHierarchy=" + addressHierarchy +
-                '}';
-    }
 }
