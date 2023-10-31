@@ -11,8 +11,11 @@ import java.util.List;
 
 @Repository
 public interface AddressObjectRepository extends JpaRepository<AddressObject, Integer> {
-    @Query(value = "select * from as_addr_obj", nativeQuery = true)
+    @Query(value = "SELECT * FROM as_addr_obj", nativeQuery = true)
     List<AddressObject> findAll();
-//    AddressObject getAddressObjectByIdById (int id);
+
+    //    @Query (value = "SELECT * FROM as_addr_obj ORDER BY object_id",  nativeQuery = true)
+    AddressObject getAddressObjectById (int id);
+
 //    List<AddressObject> getAddressObjectsByDate (LocalDate date);
 }

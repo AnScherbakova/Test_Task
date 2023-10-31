@@ -20,11 +20,11 @@ public class AddressObjectController {
         return addressObjectService.getAllAddress();
     }
 
-//    @GetMapping("/addr/obj/{id}")
-//    public AddressObject getAddressObjectById(@PathVariable int id) {
-//        AddressObject addressObject = addressObjectService.getAddressObjectById(id);
-//        return addressObject;
-//    }
+    @GetMapping("/addr/obj/{id}")
+    public AddressObject getAddressObjectById(@PathVariable int id) {
+        AddressObject addressObject = addressObjectService.getAddressObjectById(id);
+        return addressObject;
+    }
 
     @PostMapping("/addr/obj")
     public AddressObject addNewAddressObject(@RequestBody AddressObject addressObject) {

@@ -28,7 +28,7 @@ public class AddressObjectService {
 //        return objectList;
 //    }
 //
-//    public AddressObject getAddressObjectById(int id) {
-//        return addressObjectRepository.getAddressObjectByIdById(id);
-//    }
+    public AddressObject getAddressObjectById(int id) {
+        return addressObjectRepository.getAddressObjectById(id);
+    }
 }
