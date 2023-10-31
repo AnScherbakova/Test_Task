@@ -4,4 +4,4 @@ INSERT INTO my_db.as_adm_hierarchy VALUES (201, 2, CURRENT_DATE, DATE_ADD(curren
 
 SELECT *FROM my_db.as_adm_hierarchy;
 
-select my_db.as_addr_obj.object_id from my_db.as_addr_obj INNER JOIN my_db.as_adm_hierarchy ON as_addr_obj.object_id = as_adm_hierarchy.object_id;
+select my_db.as_addr_obj.object_id from my_db.as_addr_obj INNER JOIN my_db.as_adm_hierarchy ON as_addr_obj.object_id = as_adm_hierarchy.obj_id;

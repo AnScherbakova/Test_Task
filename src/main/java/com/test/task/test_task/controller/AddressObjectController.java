@@ -2,7 +2,6 @@ package com.test.task.test_task.controller;
 
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.service.AddressObjectService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -11,10 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@RequiredArgsConstructor
 public class AddressObjectController {
 
     private final AddressObjectService addressObjectService;
+
+    public AddressObjectController(AddressObjectService addressObjectService) {
+        this.addressObjectService = addressObjectService;
+    }
 
     @GetMapping("/addr/obj")
     public Collection<AddressObject> showAllAddressObjects() {

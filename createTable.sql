@@ -1,4 +1,4 @@
-CREATE TABLE my_db.AS_ADDR_OBJ
+CREATE TABLE my_db.as_addr_obj
 (
     object_id  int not null auto_increment,
     name       varchar(20),
@@ -10,13 +10,12 @@ CREATE TABLE my_db.AS_ADDR_OBJ
     primary key (object_id)
 );
 
-CREATE TABLE my_db.AS_ADM_HIERARCHY
+CREATE TABLE my_db.as_adm_hierarchy
 (
     parent_obj_id int not null auto_increment,
-    object_id     int,
+    obj_id     int REFERENCES my_db.as_addr_obj (object_id),
     start_date    date,
     end_date      date,
     ISACTIVE      boolean,
-    primary key (parent_obj_id),
-    foreign key (object_id) references my_db.AS_ADDR_OBJ (object_id)
+    primary key (parent_obj_id)
 );

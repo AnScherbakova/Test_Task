@@ -1,21 +1,13 @@
 package com.test.task.test_task.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "as_adm_hierarchy")
-@EqualsAndHashCode
-@ToString
-@Getter
-@Setter
 public class AddressHierarchy {
     @Id
     @GeneratedValue
@@ -25,10 +17,10 @@ public class AddressHierarchy {
     private LocalDate startDate;
     @Column(name = "end_date")
     private LocalDate endDate;
-    @Column(name = "is_active")
+    @Column(name = "ISACTIVE")
     private boolean isActive;
 
-    @OneToMany(mappedBy = "object_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "addressHierarchy")
     private Collection<AddressObject> addressObjects;
 
     public AddressHierarchy(LocalDate startDate, LocalDate endDate, boolean isActive) {
@@ -37,4 +29,71 @@ public class AddressHierarchy {
         this.isActive = isActive;
     }
 
+    public AddressHierarchy() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Collection<AddressObject> getAddressObjects() {
+        return addressObjects;
+    }
+
+    public void setAddressObjects(Collection<AddressObject> addressObjects) {
+        this.addressObjects = addressObjects;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressHierarchy{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isActive=" + isActive +
+                ", addressObjects=" + addressObjects +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressHierarchy that = (AddressHierarchy) o;
+        return id == that.id && isActive == that.isActive && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(addressObjects, that.addressObjects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, startDate, endDate, isActive, addressObjects);
+    }
 }
