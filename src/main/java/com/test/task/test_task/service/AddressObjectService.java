@@ -31,4 +31,8 @@ public class AddressObjectService {
     public AddressObject getAddressObjectById(int id) {
         return addressObjectRepository.getAddressObjectById(id);
     }
+
+    public List<AddressObject> getAddressObjectsByTypeName(int typeName) {
+        return addressObjectRepository.getAddressObjectsByTypeName(typeName);
+    }
 }

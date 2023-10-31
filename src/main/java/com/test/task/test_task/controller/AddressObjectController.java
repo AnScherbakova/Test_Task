@@ -1,5 +1,6 @@
 package com.test.task.test_task.controller;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.service.AddressObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class AddressObjectController {
         addressObjectService.saveAddressObject(addressObject);
         return addressObject;
     }
+
+    @GetMapping("/addr/obj/get/{typeName}")
+    public List<AddressObject> getAddressObjectsByTypeName(@PathVariable int typeName) {
+        return addressObjectService.getAddressObjectsByTypeName(typeName);
+    }
+
 
 //    @PostMapping("/addr/obj/{date}")
 //    public List<AddressObject> getAddressObjectByDate(@PathVariable LocalDate date) {
