@@ -23,10 +23,10 @@ public class AddressObjectService {
         addressObjectRepository.save(addressObject);
     }
 
-//    public List<AddressObject> getAddressObjectByDate(LocalDate date) {
-//        List<AddressObject> objectList = addressObjectRepository.getAddressObjectsByDate(date);
-//        return objectList;
-//    }
+    public List<AddressObject> getAddressObjectByDate(LocalDate date) {
+        List<AddressObject> objectList = addressObjectRepository.getAddressObjectsByStartDate(date);
+        return objectList;
+    }
 //
     public AddressObject getAddressObjectById(int id) {
         return addressObjectRepository.getAddressObjectById(id);

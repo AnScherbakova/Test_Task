@@ -16,5 +16,5 @@ public interface AddressObjectRepository extends JpaRepository<AddressObject, In
     AddressObject getAddressObjectById (int id);
     List<AddressObject> getAddressObjectsByTypeName(int typeName);
 
-//    List<AddressObject> getAddressObjectsByDate (LocalDate date);
+    List<AddressObject> getAddressObjectsByStartDate (LocalDate date);
 }
