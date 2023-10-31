@@ -1,6 +1,8 @@
 package com.test.task.test_task.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -14,7 +16,7 @@ public class AddressObject {
     @Column(name = "name")
     private String name;
     @Column(name = "type_name")
-    private String typeName;
+    private Integer typeName;
     @Column(name = "start_date")
     private LocalDate startDate;
     @Column(name = "end_date")
@@ -24,11 +26,11 @@ public class AddressObject {
     @Column(name = "ISACTIVE")
     private boolean isActive;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "object_id")
+    @ManyToOne
+    @JoinColumn (name = "parent_obj_id")
     private AddressHierarchy addressHierarchy;
 
-    public AddressObject(String name, String typeName,
+    public AddressObject(String name, Integer typeName,
                          LocalDate startDate, LocalDate endDate,
                          boolean isActual, boolean isActive) {
 
@@ -40,9 +42,7 @@ public class AddressObject {
         this.isActive = isActive;
     }
 
-    public AddressObject() {
-        
-    }
+
 
     public int getId() {
         return id;
@@ -60,11 +60,11 @@ public class AddressObject {
         this.name = name;
     }
 
-    public String getTypeName() {
+    public Integer getTypeName() {
         return typeName;
     }
 
-    public void setTypeName(String typeName) {
+    public void setTypeName(Integer typeName) {
         this.typeName = typeName;
     }
 

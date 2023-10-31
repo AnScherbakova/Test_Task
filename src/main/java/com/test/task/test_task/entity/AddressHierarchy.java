@@ -2,7 +2,9 @@ package com.test.task.test_task.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Collection;
+
+
 
 @Entity
 @Table(name = "as_adm_hierarchy")
@@ -18,20 +20,16 @@ public class AddressHierarchy {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "object_id",
+    @OneToMany(mappedBy = "object_id",
             fetch = FetchType.LAZY)
-    private List<AddressObject> addressObjectList;
+    private Collection<AddressObject> addressObjects;
 
-    public AddressHierarchy(LocalDate startDate, LocalDate endDate, boolean isActive, List<AddressObject> addressObjectList) {
+    public AddressHierarchy(LocalDate startDate, LocalDate endDate, boolean isActive) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.isActive = isActive;
-        this.addressObjectList = addressObjectList;
     }
 
-    public AddressHierarchy() {
-    }
 
     public int getId() {
         return id;
@@ -65,12 +63,13 @@ public class AddressHierarchy {
         isActive = active;
     }
 
-    public List<AddressObject> getAddressObjectList() {
-        return addressObjectList;
+
+    public Collection<AddressObject> getAddressObjects() {
+        return addressObjects;
     }
 
-    public void setAddressObjectList(List<AddressObject> addressObjectList) {
-        this.addressObjectList = addressObjectList;
+    public void setAddressObjects(Collection<AddressObject> addressObjects) {
+        this.addressObjects = addressObjects;
     }
 
     @Override
@@ -80,7 +79,7 @@ public class AddressHierarchy {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", isActive=" + isActive +
-                ", addressObjectList=" + addressObjectList +
+                ", addressObjects=" + addressObjects +
                 '}';
     }
 }

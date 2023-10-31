@@ -2,21 +2,24 @@ package com.test.task.test_task.service;
 
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.repository.AddressObjectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class AddressObjectServiceImpl implements AddressObjectService {
 
-    @Autowired (required=false)
-    private AddressObjectRepository addressObjectRepository;
+    private final AddressObjectRepository addressObjectRepository;
+
+    public AddressObjectServiceImpl(AddressObjectRepository addressObjectRepository) {
+        this.addressObjectRepository = addressObjectRepository;
+    }
 
     @Override
-    public List<AddressObject> getAllAddress() {
+    public Collection<AddressObject> getAllAddress() {
         return addressObjectRepository.findAll();
     }
 
