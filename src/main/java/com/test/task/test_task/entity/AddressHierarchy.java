@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "as_adm_hierarchy")
+
 public class AddressHierarchy {
     @Id
     @GeneratedValue
@@ -33,39 +34,30 @@ public class AddressHierarchy {
 
     public AddressHierarchy() {
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public LocalDate getStartDate() {
         return startDate;
     }
-
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
     public LocalDate getEndDate() {
         return endDate;
     }
-
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
-
     public boolean isActive() {
         return isActive;
     }
-
     public void setActive(boolean active) {
         isActive = active;
     }
-
     public Collection<AddressObject> getAddressObjects() {
         return addressObjects;
     }

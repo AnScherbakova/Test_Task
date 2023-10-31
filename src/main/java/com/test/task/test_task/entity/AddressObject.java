@@ -4,6 +4,8 @@ package com.test.task.test_task.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
+
 import java.time.LocalDate;
 import java.util.Objects;
 /**
@@ -158,7 +160,10 @@ public class AddressObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddressObject that = (AddressObject) o;
-        return id == that.id && isActual == that.isActual && isActive == that.isActive && Objects.equals(name, that.name) && Objects.equals(typeName, that.typeName) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(addressHierarchy, that.addressHierarchy);
+        return id == that.id && isActual == that.isActual && isActive == that.isActive
+                && Objects.equals(name, that.name) && Objects.equals(typeName, that.typeName)
+                && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate)
+                && Objects.equals(addressHierarchy, that.addressHierarchy);
     }
 
     @Override
