@@ -1,20 +1,27 @@
 package com.test.task.test_task.controller;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.service.AddressObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
+/**
+ * Класс - контроллер для работы с адрессами объектов
+ *
+ * @see AddressObjectService
+ */
 
 @RestController
 @RequestMapping("/api")
 public class AddressObjectController {
 
     @Autowired
-    private  AddressObjectService addressObjectService;
+    private AddressObjectService addressObjectService;
 
     @GetMapping("/addr/obj")
     public List<AddressObject> showAllAddressObjects() {
@@ -38,9 +45,17 @@ public class AddressObjectController {
         return addressObjectService.getAddressObjectsByTypeName(typeName);
     }
 
-    @PostMapping("/addr/obj/{date}")
+    @GetMapping("/addr/obj/{date}")
     public List<Integer> getAddressObjectByDate(@PathVariable LocalDate date) {
         List<Integer> addressObjects = addressObjectService.getAddressObjectByDate(date);
         return addressObjects;
     }
+
+    @PostMapping("/addr/obj/dateAndTypeName")
+    public Map<Integer, String> getAddressByDateAndTypeName(@RequestParam(value = "date", required = false) LocalDate date,
+                                                            @RequestParam(value = "typeName", required = false) int typeName) {
+        return addressObjectService.getAddressByStartDateAndTypeName(date, typeName);
+    }
+
 }
+

@@ -6,26 +6,52 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
+/**
+ * Class of AddressObject
+ */
 
 @Entity
 @Table(name = "as_addr_obj")
 public class AddressObject {
+    /**
+     * "идентификатор адреса"
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "object_id")
     private int id;
+    /**
+     * "название адреса"
+     */
     @Column(name = "name")
     private String name;
+
+    /**
+     * "тип адреса"
+     */
     @Column(name = "type_name")
     private Integer typeName;
+    /**
+     * "начало действия адреса"
+     */
     @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name = "start_date")
     private LocalDate startDate;
+    /**
+     * "окончание действия адреса"
+     */
     @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name = "end_date")
     private LocalDate endDate;
+    /**
+     * "признаки актуальности адреса"
+     */
     @Column(name = "ISACTUAL")
     private boolean isActual;
+
+    /**
+     * "признаки актуальности адреса"
+     */
     @Column(name = "ISACTIVE")
     private boolean isActive;
 
