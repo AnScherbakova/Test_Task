@@ -7,7 +7,6 @@ POST http://localhost:8080/api/addr/obj
 ### Получение объекта из БД по id
 POST http://localhost:8080/api/addr/obj/1
 
-
 ### Получение всех объектов из БД по date
 GET http://localhost:8080/api/addr/obj/2023-10-31
 

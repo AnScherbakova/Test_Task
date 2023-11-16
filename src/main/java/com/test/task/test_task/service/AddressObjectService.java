@@ -2,6 +2,8 @@ package com.test.task.test_task.service;
 
 import com.test.task.test_task.entity.AddressObject;
 import com.test.task.test_task.repository.AddressObjectRepository;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,16 +11,17 @@ import java.time.LocalDate;
 import java.util.*;
 
 
+
 /**
  * Класс - сервис для работы адрессами объектов
  *
  * @see AddressObjectRepository
  */
-
 @Service
 public class AddressObjectService {
     @Autowired
     private AddressObjectRepository addressObjectRepository;
+
 
 
     /**
@@ -64,14 +67,18 @@ public class AddressObjectService {
      * @param  startDate,typeName
      * * @return {@link List<Integer>}
      */
-    public Map<Integer, String> getAddressByStartDateAndTypeName(LocalDate startDate, int typeName) {
+    public Map<Integer, String> getAddressByStartDateAndTypeName(LocalDate startDate, int [] typeName) {
         Map<Integer, String> integerStringMap = new HashMap<>();
+
         for (AddressObject e: addressObjectRepository.findAll()) {
-            if (e.getStartDate().equals(startDate) && e.getTypeName().equals(typeName)) {
-                Integer type = e.getTypeName();
-                String name = e.getName();
-                integerStringMap.put(type,name);
+            if (e.getStartDate().equals(startDate)){
+                for (int d = 0; d < typeName.length; d++) {
+                    if (e.getTypeName().equals(typeName[d])){
+                        integerStringMap.put(e.getTypeName(),e.getName());
+                    }
+                }
             }
+
         }
         return integerStringMap;
     }

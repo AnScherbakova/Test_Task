@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Класс - контроллер для работы с адрессами объектов
@@ -48,7 +49,7 @@ public class AddressObjectController {
 
     @PostMapping("/addr/obj/dateAndTypeName")
     public Map<Integer, String> getAddressByDateAndTypeName(@RequestParam(value = "date") LocalDate date,
-                                                            @RequestParam(value = "typeName") int typeName) {
+                                                                 @RequestParam(value = "typeName") int [] typeName) {
         return addressObjectService.getAddressByStartDateAndTypeName(date, typeName);
     }
 
